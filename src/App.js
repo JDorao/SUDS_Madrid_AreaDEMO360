@@ -58,7 +58,7 @@ let auth;
 
 if (isFirebaseConfigComplete) {
   try {
-    firebaseApp = initializeApp(firebaseConfig);
+    const firebaseApp = initializeApp(firebaseConfig);
     db = getFirestore(firebaseApp);
     auth = getAuth(firebaseApp);
     console.log("Firebase initialized successfully with environment variables.");
