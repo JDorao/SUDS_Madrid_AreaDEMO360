@@ -32,7 +32,26 @@ const isFirebaseConfigComplete = firebaseConfig.apiKey &&
                                firebaseConfig.authDomain &&
                                firebaseConfig.projectId &&
                                firebaseConfig.appId;
+// Define la configuración de Firebase usando las variables de entorno de Vercel
+const firebaseConfig = {
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  // Aunque FIRESTORE_APP_ID no suele ir en el objeto firebaseConfig,
+  // si tu código lo usa en initializeApp, mantenlo. Si no, no es necesario aquí.
+  // firestoreAppId: process.env.REACT_APP_FIRESTORE_APP_ID,
+};
 
+// Variable para verificar si la configuración de Firebase es completa
+const isFirebaseConfigComplete = !!(
+  firebaseConfig.apiKey &&
+  firebaseConfig.authDomain &&
+  firebaseConfig.projectId &&
+  firebaseConfig.appId
+);
 let firebaseApp;
 let db;
 let auth;
